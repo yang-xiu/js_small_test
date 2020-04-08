@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击x，关闭广告</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        .box {
+            position: relative;
+            width: 98%;
+        }
+        
+        .box img {
+            width: 100%;
+        }
+        
+        .close {
+            position: absolute;
+            cursor: pointer;
+            right: 10px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            background: url(images/close.jpg) no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <img src="images/luzhou.jpg" alt="" />
+        <div class="close">
+
+        </div>
+    </div>
+    <script>
+        var box = document.querySelector('.box');
+        var close = box.querySelector('.close');
+        close.onclick = function() {
+            box.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

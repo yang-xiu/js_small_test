@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>点击图片，更换背景</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background: url(images/1.jpg) no-repeat;
+            background-position: center top;
+        }
+        
+        ul {
+            margin: 100px auto;
+            width: 410px;
+            height: 65px;
+            background-color: #fff;
+            list-style: none;
+        }
+        
+        ul li {
+            cursor: pointer;
+            float: left;
+            width: 100px;
+            margin: 2px 0px 2px 2px;
+            height: 61px;
+            background: url(images/1.jpg) no-repeat;
+            background-size: 100px 61px;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        var lis = document.querySelectorAll('li');
+        var body = document.body;
+        for (var i = 0; i < lis.length; i++) {
+            var y = i + 1;
+            lis[i].style.backgroundImage = 'url(images/' + y + '.jpg)';
+        }
+        for (var i = 0; i < lis.length; i++) {
+            lis[i].onclick = function() {
+                // console.log();
+                // var y = i + 1;
+                body.style.backgroundImage = this.style.backgroundImage;
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世纪佳缘欢迎登录</title>
+    <style>
+        .box {
+            width: 200px;
+            height: 200px;
+            background-color: skyblue;
+            border-radius: 20px;
+            border: 1px solid blue;
+            margin: 100px auto;
+            padding: 50px 20px;
+        }
+        
+        .box input {
+            margin: 20px 15px;
+            height: 30px;
+            color: #777;
+        }
+        
+        .box input:last-child {
+            width: 80px;
+            margin-left: 60px;
+            height: 40px;
+            font-size: 18px;
+            background-color: rgb(44, 44, 182);
+            color: #fff;
+            border: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <input type="text" value="邮箱/ID/手机号" />
+        <input type="text" value="密码" />
+        <input type="button" value="登录" />
+    </div>
+    <script>
+        var inputs = document.querySelectorAll('input');
+        inputs[0].onfocus = function() {
+            inputs[0].style.color = '#777';
+            if (inputs[0].value === '邮箱/ID/手机号')
+                inputs[0].value = '';
+        }
+        inputs[0].onblur = function() {
+            if (inputs[0].value === '') {
+                inputs[0].value = '邮箱/ID/手机号'
+                inputs[0].style.color = '#777';
+
+            } else {
+                inputs[0].style.color = '#333';
+            }
+        }
+        inputs[1].onfocus = function() {
+            inputs[1].value = '';
+            inputs[1].type = 'password';
+        }
+        inputs[1].onblur = function() {
+            if (inputs[1].value === '') {
+                inputs[1].type = 'text';
+                inputs[1].value = '密码';
+                inputs[1].style.color = '#777';
+            } else {
+                inputs[1].style.color = '#333';
+            }
+        }
+        inputs[2].onmouseover = function() {
+            inputs[2].style.backgroundColor = 'blue';
+
+        }
+        inputs[2].onmouseout = function() {
+            inputs[2].style.backgroundColor = 'rgb(44, 44, 182)';
+
+        }
+    </script>
+</body>
+
+</html>
