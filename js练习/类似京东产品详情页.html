@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情页</title>
+    <style>
+        header {
+            position: relative;
+        }
+        
+        ul {
+            width: 988px;
+            height: 38px;
+            background-color: #F7F7F7;
+            line-height: 38px;
+            text-align: center;
+            border-bottom: 1px solid #DF3033;
+        }
+        
+        li {
+            list-style: none;
+            float: left;
+            margin-right: 50px;
+            padding: 0px 15px;
+            color: #666;
+            cursor: pointer;
+        }
+        
+        button {
+            height: 28px;
+            background-color: #DF3033;
+            float: right;
+            margin-right: 10px;
+            color: #fff;
+            border: 0;
+            margin-top: 5px;
+            padding: 0px 16px;
+            cursor: pointer;
+        }
+        
+        .bgc {
+            background-color: #DF3033;
+            color: #fff !important;
+        }
+        
+        .body div {
+            display: none;
+        }
+        
+        .detail {
+            width: 130px;
+            height: 140px;
+            position: absolute;
+            right: 310px;
+            border: 1px solid #777;
+            padding: 5px;
+            top: 40px;
+            display: none;
+        }
+        
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <header>
+            <ul>
+                <li class="bgc">商品介绍</li>
+                <li>规格与包装</li>
+                <li>售后保障</li>
+                <li>商品评论（161万+）</li>
+                <li>手机社区</li>
+                <button>加入购物车</button>
+            </ul>
+            <div class="detail">
+                <img src="images/iphone.jpg" alt="" />
+            </div>
+        </header>
+        <div class="body">
+            <div style="display: block;">品牌： Apple <br/>商品名称：AppleiPhone 11<br/>商品编号：100008348542<br/> 商品毛重：470.00g
+                <br/>商品产地：中国大陆<br/>CPU型号：其他<br/>运行内存：其它内存<br/>机身存储：128GB<br/>存储卡：不支持存储卡
+                <br/>摄像头数量：后置双摄<br/>后摄主摄像素：1200万像素<br/>前摄主摄像素：1200万像素<br/> 主屏幕尺寸（英寸）：6.1英寸
+                <br/>分辨率：其它分辨率<br/>屏幕比例：其它屏幕比例<br/>屏幕前摄组合：刘海屏
+                <br/>充电器：其他<br/>热点：人脸识别<br/>操作系统：iOS(Apple)<br/>特殊功能：语音命令</div>
+            <div>主体<br/> 入网型号| A2223<br/> 品牌| Apple
+                <br/> 产品名称| iPhone 11<br/> 上市年份| 2019年
+                <br/> 上市月份| 9月
+            </div>
+            <div>厂家服务厂家服务</div>
+            <div>好评度 95%
+            </div>
+            <div>商品问答 心中疑惑就问问买过此商品的同学吧~我要提问
+            </div>
+        </div>
+    </div>
+    <script>
+        var lis = document.querySelector('ul').children;
+        //鼠标经过，背景变色
+        for (var i = 0; i < lis.length - 1; i++) {
+            lis[i].onmouseover = function() {
+                if (this.className === '') {
+                    this.style.color = '#DF3033';
+                }
+            }
+            lis[i].onmouseout = function() {
+                if (this.className === '') {
+                    this.style.color = '#666';
+                }
+            }
+        }
+        //点击不同的li，下面部分显示不同的内容。
+        var divs = document.querySelector('.body').children;
+        for (var i = 0; i < lis.length - 1; i++) {
+            lis[i].setAttribute('index', i);
+            lis[i].onclick = function() {
+                for (var i = 0; i < lis.length - 1; i++) {
+                    if (lis[i].className === 'bgc') {
+                        lis[i].className = '';
+                        divs[i].style.display = 'none';
+                        this.style.color = '#666';
+                    }
+                }
+                if (this.className === '') {
+                    this.className = 'bgc';
+                    divs[this.getAttribute('index')].style.display = 'block';
+                }
+
+            }
+        }
+        var btn = document.querySelector('button');
+        var detail = document.querySelector('.detail');
+        btn.onmouseover = function() {
+            detail.style.display = 'block';
+        }
+        btn.onmouseout = function() {
+            detail.style.display = 'none';
+        }
+    </script>
+</body>
+
+</html>

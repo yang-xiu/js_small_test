@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>欢迎留言</title>
+    <style>
+        .box {
+            position: relative;
+            margin: 100px 400px;
+        }
+        
+        textarea {
+            resize: none;
+            border: 1px solid pink;
+        }
+        
+        ul {
+            list-style: none;
+            margin-top: 50px;
+        }
+        
+        li {
+            margin-bottom: 20px;
+        }
+        
+        button {
+            position: absolute;
+            right: 105px;
+            top: 160px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <textarea name="" id="" cols="60" rows="10">123</textarea>
+        <button>发布</button>
+        <ul>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+        var textarea = document.querySelector('textarea');
+        var btn = document.querySelector('button');
+        var ul = document.querySelector('ul');
+        btn.onclick = function() {
+            var li = document.createElement('li');
+            if (textarea.value != '') {
+                li.innerHTML = textarea.value;
+                li.style.color = 'skyblue';
+            }
+            // ul.appendChild(li);
+            ul.insertBefore(li, ul.children[0]);
+
+        }
+    </script>
+</body>
+
+</html>
