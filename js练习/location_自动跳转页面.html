@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>locotion-跳转到新浪首页</title>
+</head>
+
+<body>
+    <p>等待5秒自动跳转......</p>
+    <script>
+        p = document.querySelector('p');
+        var time = 5;
+        setInterval(function() {
+            if (time == 0) {
+                location.href = 'https://www.sina.com.cn/';
+            } else {
+                time--;
+                p.innerHTML = '等待' + time + '秒自动跳转......';
+            }
+        }, 1000);
+    </script>
+</body>
+
+</html>

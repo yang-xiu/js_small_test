@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>产品详情页的放大镜</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        .box {
+            float: left;
+            margin-top: 50px;
+            margin-left: 50px;
+            width: 400px;
+            height: 400px;
+            cursor: move;
+        }
+        
+        .banner {
+            width: 400px;
+            height: 400px;
+            background-color: #fff;
+            border: 1px solid #777;
+        }
+        
+        .banner img {
+            width: 100%;
+        }
+        
+        .mask {
+            position: absolute;
+            display: none;
+            top: 150px;
+            left: 150px;
+            width: 300px;
+            height: 300px;
+            transform: translate(-50%, -50%);
+            background-color: rgb(233, 233, 158);
+            opacity: .5;
+        }
+        
+        .big {
+            position: relative;
+            display: none;
+            float: left;
+            margin-left: 20px;
+            margin-top: 50px;
+            width: 500px;
+            height: 500px;
+            border: 1px solid #777;
+            background-color: #fff;
+            overflow: hidden;
+        }
+        
+        .big img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            /* width: 400px; */
+            /* transform: translate(-50%, -50%); */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <div class="banner">
+            <img src="images/b3.png" alt="">
+        </div>
+
+        <div class="mask"></div>
+    </div>
+    <div class="big">
+        <img src="images/big.jpg" alt="">
+    </div>
+
+    <script>
+        window.addEventListener('load', function() {
+            banner = document.querySelector('.box');
+            mask = document.querySelector('.mask');
+            big = document.querySelector('.big');
+            bigimg = big.querySelector('img');
+            banner.addEventListener('mousemove', function(e) {
+                var maskx = e.pageX;
+                var masky = e.pageY;
+                var maskMin = mask.clientWidth / 2 + 50;
+                var maskMax = 50 + banner.clientWidth - mask.clientWidth / 2;
+                console.log(maskMin);
+                //鼠标移动，遮盖层跟随鼠标移动，并且有范围要求
+                if (maskx < maskMin || maskx > maskMax || masky < maskMin || masky > maskMax) {
+                    mask.style.left = maskx + 'px';
+                    mask.style.top = masky + 'px';
+                    if (maskx < maskMin) {
+                        mask.style.left = maskMin + 'px';
+                    }
+                    if (maskx > maskMax) {
+                        mask.style.left = maskMax + 'px';
+                    }
+                    if (masky < maskMin) {
+                        mask.style.top = maskMin + 'px';
+                    }
+                    if (masky > maskMax) {
+                        mask.style.top = maskMax + 'px';
+                    }
+
+                } else {
+                    mask.style.left = maskx + 'px';
+                    mask.style.top = masky + 'px';
+                }
+                //遮盖层的移动距离/最大距离=大图移动距离/最大距离
+                var bigx = (parseFloat(mask.style.left) - banner.offsetLeft) * 100 / 80;
+                var bigy = (parseFloat(mask.style.top) - banner.offsetTop) * 100 / 80;
+                // console.log(mask.style.left);
+                bigimg.style.top = -bigy + 'px';
+                bigimg.style.left = -bigx + 'px';
+            });
+
+
+            banner.addEventListener('mouseover', function() {
+                //鼠标移动到banner，mask，big显示
+                mask.style.display = 'block';
+                big.style.display = 'block';
+            });
+            banner.addEventListener('mouseout', function() {
+                mask.style.display = 'none';
+                big.style.display = 'none';
+            });
+        });
+
+        //触发的元素要用最大范围的，因为有冒泡过程。
+    </script>
+</body>
+
+</html>
